@@ -1,0 +1,41 @@
+Public j As Integer
+
+Sub writeF()
+    Application.OnTime Now + TimeValue("00:00:59"), "writeF"
+    writeFile
+End Sub
+
+
+Function writeFile()
+'
+' writeFile Macro
+'
+Dim i As Integer
+Dim k As Integer
+Dim n As Integer
+Dim countn As Integer
+Dim a As String
+Dim b As String
+
+If (j = 0 Or j = 1) Then
+j = 1
+End If
+
+
+j = j + 1
+    Application.EnableEvents = False
+    For i = 2 To 25
+        
+        Sheets("Sheet1").Rows(i).Copy
+        a = "Sheets" & i
+        Sheets(a).Rows(j).PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+    Next
+    
+        
+        Application.EnableEvents = True
+
+' Keyboard Shortcut: Ctrl+w
+'
+End Function
+
