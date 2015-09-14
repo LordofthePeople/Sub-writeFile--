@@ -1,0 +1,17 @@
+Sub createFile()
+'
+' createFile Macro
+'
+Dim n, countn As Integer
+
+Worksheets("Sheet1").Activate
+
+
+countn = ActiveSheet.UsedRange.Rows.Count
+
+For n = 2 To countn
+        Sheets.Add After:=Sheets(Sheets.Count) 'creates a new worksheet
+        Sheets(Sheets.Count).Name = "Sheets" & n
+ Next
+
+End Sub
