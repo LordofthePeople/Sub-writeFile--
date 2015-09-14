@@ -1,0 +1,35 @@
+Sub writeFile()
+'
+' writeFile Macro
+'
+Dim i As Integer
+Dim j As Integer
+Dim k As Integer
+Dim n As Integer
+Dim countn As Integer
+Dim a As String
+Dim b As String
+
+flag = 0
+j = 2
+Do While (flag <> 1)
+    Application.EnableEvents = False
+    For i = 2 To 25
+        
+        Sheets("Sheet1").Rows(i).Copy
+        a = "Sheets" & i
+        Sheets(a).Rows(j).PasteSpecial xlPasteValues
+        Application.CutCopyMode = False
+    Next
+    Application.OnTime Now + TimeValue("0:00:10")
+    Application.EnableEvents = True
+    j = j + 1
+    If (Hour(Now) = 3 And Minute(Now) > 30) Then
+        flag = 1
+    End If
+
+Loop
+' Keyboard Shortcut: Ctrl+w
+'
+End Sub
+
